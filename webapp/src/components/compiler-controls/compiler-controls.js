@@ -14,9 +14,9 @@ class CompilerControls {
         this.compileBtnEnable = ko.pureComputed(() => {
             const ready = !(this.compileStatus() === 'Waiting' || this.compileStatus() === 'Compiling');
             if (ready) {
-                notify('The compiler is now online', 'green');
+                notify('The TCL system is now online', 'green');
             } else {
-                notify('The compiler is currently busy', 'yellow');
+                notify('The TCL system is currently busy', 'yellow');
             }
             return ready;
         });

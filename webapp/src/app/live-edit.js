@@ -73,9 +73,7 @@ class LiveEdit {
 
     runCode(buildCmd) {
         SysGlobalObservables.fileBrowser.saveActiveFile();
-        const callback = this.processGccCompletion.bind(this);
-        SysGlobalObservables.compileStatus('Compiling');
-        this.runtime.startBuild(buildCmd, callback);
+        this.runtime.sendExecCmd(SysGlobalObservables.execCmd());
     }
 }
 

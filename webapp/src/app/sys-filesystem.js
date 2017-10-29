@@ -22,9 +22,7 @@ class SysFileSystem {
     }
 
     /*------------------------------------------------------------------------------------------------*/
-    /**
-    *   API for interating with the joined file system
-    **/
+    /* API for interating with the joined file system */
 
     writeFile(path, buf) {
         if (path.charAt(0) !== '/') {
@@ -253,10 +251,8 @@ class SysFileSystem {
     }
 
     /*------------------------------------------------------------------------------------------------*/
-    /**
-    *   Write all local files (those stored in local storage) to
-    *   the Jor1k file system (i.e /home/user)
-    **/
+    /*   Write all local files (those stored in local storage) to */
+    /*   the Jor1k file system (i.e /home/user) */
     syncVM() {
         console.log('Starting Syncing VM File System');
         this.jor1kFS.DeleteDirContents('home/user');
@@ -286,10 +282,8 @@ class SysFileSystem {
     }
 
     /*------------------------------------------------------------------------------------------------*/
-    /**
-    *   Handling callbacks from file operations done on
-    *   the Jor1k VM
-    **/
+    /*   Handling callbacks from file operations done on */
+    /*   the Jor1k VM */
     Jor1kNotifyCallBack(info) {
         const path = info.path.substring('home/user'.length, info.path.length);
 

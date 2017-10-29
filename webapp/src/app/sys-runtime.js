@@ -91,6 +91,7 @@ class SysRuntime {
                 extendedfsURL: '../fs.json',
                 earlyload: [
                     'usr/bin/gcc',
+                    'usr/bin/tclsh',
                     'usr/libexec/gcc/or1k-linux-musl/4.9.0/cc1',
                     'usr/libexec/gcc/or1k-linux-musl/4.9.0/collect2',
                     'usr/lib/libbfd-2.24.51.20140817.so',
@@ -206,7 +207,8 @@ class SysRuntime {
             if (typeof error.type === 'undefined') {
                 // if the errors are not in program.c, invalidate the row and column so that
                 // the editor does not place an annotation
-                error.row = error.col = -1;
+                error.row = -1;
+                error.col = -1;
             }
 
             return {

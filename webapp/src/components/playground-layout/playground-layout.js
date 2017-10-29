@@ -81,7 +81,7 @@ class PlaygroundLayout {
 
     createVideoSearchTab() {
         this.editorPaneTabs.push({
-            title: 'Video Search',
+            title: 'README',
             closable: false,
             component: {
                 name: 'video-search-tab'

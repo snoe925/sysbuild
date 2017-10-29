@@ -5,24 +5,23 @@ import AutoIncluder from 'components/editor/auto-include';
 import * as SysGlobalObservables from 'app/sys-global-observables';
 
 const defaultEditorText =
-`/*
-* Write your C code here
-* This file (program.c) will be overwritten if you navigate away from
-* the page or to a different lesson! To save your code, either
-* download the file to your computer, or rename program.c to
-* something else and it will be persisted until you clear your
-* browser's localStorage. Both actions, and more, can be done through
-* the File Browser.
-*/
-#include <stdio.h>
+`#
+# Write your TCL code here
+# This file (program.tcl) will be overwritten if you navigate away from
+# the page or to a different lesson! To save your code, either
+# download the file to your computer, or rename program.tcl to
+# something else and it will be persisted until you clear your
+# browser's localStorage. Both actions, and more, can be done through
+# the File Browser.
 
-int main() {
-    printf("Hello world!\\n");
-    return 0;
+proc hello_tcl {name} {
+    puts "Hello, $name from TCL version [info tclversion]\\n"
 }
+
+hello_tcl "Your name"
 `;
-const defaultBuildCmd = 'gcc -lm -Wall -fmax-errors=10 -Wextra program.c -o program';
-const defaultExecCmd = './program';
+const defaultBuildCmd = 'echo TCL does not require a build';
+const defaultExecCmd = '/usr/bin/tclsh program.tcl';
 
 class PlayActivityPage {
 
@@ -51,7 +50,7 @@ class PlayActivityPage {
         if (typeof playActivity.buildCmd !== 'undefined') {
             buildCmd = playActivity.buildCmd;
         } else if (typeof playActivity.gccOptions !== 'undefined') {
-            buildCmd = `gcc ${playActivity.gccOptions} program.c -o program`;
+            buildCmd = 'echo TCL does not require compile';
         }
         this.compilerParams.buildCmd(buildCmd);
 
@@ -84,10 +83,7 @@ class PlayActivityPage {
         this.doc = {
             text: '# Welcome\n' +
                 'Welcome to this tiny but fast linux virtual machine. ' +
-                'Write C code on the left and press the run button, or simply have fun with the linux command line below! Some things to try:\n' +
-                '* Play battleship (type `bs` then enter), Solitaire (type `blue` then enter) or the famous Tower of Hanoi game (type `hanoi` then enter) in the terminal\n' +
-                '* Destroy the system! Type `su`, press enter then type `rm -rf /` and watch the chaos! (Don\'t worry, it\'s safe. Simply refresh the page to start over)\n' +
-                '\nOnce you are done playing, learn C and system programming! Go to the lessons page by clicking the link in the top navigation bar.',
+                'Write TCL code on the left and press the run button, or simply have fun with the linux command line below!\n',
             format: 'markdown'
         };
     }

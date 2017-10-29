@@ -23,7 +23,7 @@ class Editor {
 
         this.availableThemes = ko.observableArray(['tomorrow', 'monokai', 'terminal', 'xcode']);
 
-        this.supportedAceModes = ['ace/mode/c_cpp', 'ace/mode/makefile'];
+        this.supportedAceModes = ['ace/mode/tcl', 'ace/mode/c_cpp', 'ace/mode/makefile'];
 
         this.annotations = params.annotations;
         this.keyboardShortcuts = params.keyboardShortcuts;
@@ -72,7 +72,7 @@ class Editor {
         // in the next version set editor.$blockScrolling = Infinity to disable this message"
         this.aceEditor.$blockScrolling = Infinity;
 
-        this.setAceMode('c_cpp');
+        this.setAceMode('tcl');
         this.aceEditor.getSession().setTabSize(4);
         this.aceEditor.getSession().setUseSoftTabs(false);
 

@@ -39,7 +39,8 @@ class Filebrowser {
     constructor() {
         const readyCallback = () => {
             this.id = '#file-browser-body';
-            const fs = this.fs = SysFileSystem;
+            const fs = SysFileSystem;
+            this.fs = SysFileSystem;
 
             this.editor = SysGlobalObservables.editor;
             SysGlobalObservables.fileBrowser = this;
@@ -418,18 +419,18 @@ class Filebrowser {
                 }
             });
 
-            // overwrite program.c with contents of the editor for the current play activity
-            fs.writeFile('/program.c', new Buffer(this.editor.getText(), 'binary'));
+            // overwrite program.tcl with contents of the editor for the current play activity
+            fs.writeFile('/program.tcl', new Buffer(this.editor.getText(), 'binary'));
 
             // init
             this.init();
 
-            // make program.c active
-            if (this.metaDataPathLookUp['/program.c']) {
+            // make program.tcl active
+            if (this.metaDataPathLookUp['/program.tcl']) {
                 this.makeActive(null);
-                const content = fs.readFileSync('/program.c').toString('binary');
-                this.makeActive('/program.c');
-                this.editor.setFile(self.metaDataPathLookUp['/program.c'].path, self.metaDataPathLookUp['/program.c'].name, content);
+                const content = fs.readFileSync('/program.tcl').toString('binary');
+                this.makeActive('/program.tcl');
+                this.editor.setFile(self.metaDataPathLookUp['/program.tcl'].path, self.metaDataPathLookUp['/program.tcl'].name, content);
             }
         };
 
